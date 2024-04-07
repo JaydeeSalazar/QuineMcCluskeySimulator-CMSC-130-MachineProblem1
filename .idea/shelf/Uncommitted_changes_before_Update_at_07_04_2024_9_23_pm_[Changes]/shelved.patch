@@ -1,0 +1,101 @@
+Index: src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cmsc130_machineproblem1;\n\nimport javafx.application.Application;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Scene;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\n\npublic class HelloApplication extends Application {\n    @Override\n    public void start(Stage stage) throws IOException {\n        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication .class.getResource(\"hello-view.fxml\"));\n        Scene scene = new Scene(fxmlLoader.load());\n        stage.setTitle(\"Quine-McCluskey Method Calculator\");\n        stage.setScene(scene);\n        stage.show();\n    }\n\n    public static void main(String[] args)\n    {\n        launch();\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java b/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java
+--- a/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java	(revision cee8476350fab7b6eeb9b532b47edb732bfa2d16)
++++ b/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java	(date 1712492494921)
+@@ -7,9 +7,11 @@
+ 
+ import java.io.IOException;
+ 
+-public class HelloApplication extends Application {
++public class HelloApplication extends Application
++{
+     @Override
+-    public void start(Stage stage) throws IOException {
++    public void start(Stage stage) throws IOException
++    {
+         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication .class.getResource("hello-view.fxml"));
+         Scene scene = new Scene(fxmlLoader.load());
+         stage.setTitle("Quine-McCluskey Method Calculator");
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"e544ec53-be80-4a1e-a093-e78750ca451e\" name=\"Changes\" comment=\"FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI\">\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java\" beforeDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaFXApplication\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/target/classes/com/example/cmsc130_machineproblem1/HelloApplication.class\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/target/classes/com/example/cmsc130_machineproblem1/HelloController.class\" root0=\"SKIP_INSPECTION\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2ellmqnsErfpdAVeXylcmVnV3jI\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Application.HelloApplication.executor\": \"Run\",\n    \"Application.test.executor\": \"Run\",\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"git-widget-placeholder\": \"master\",\n    \"ignore.virus.scanning.warn.message\": \"true\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"project.structure.last.edited\": \"Global Libraries\",\n    \"project.structure.proportion\": \"0.0\",\n    \"project.structure.side.proportion\": \"0.2\",\n    \"settings.editor.selected.configurable\": \"preferences.JavaFX\"\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.cmsc130_machineproblem1.HelloApplication\" />\n      <module name=\"CMSC130_MachineProblem1\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.example.cmsc130_machineproblem1.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"e544ec53-be80-4a1e-a093-e78750ca451e\" name=\"Changes\" comment=\"\" />\n      <created>1712487207849</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1712487207849</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Test2&#10;testing testing\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712487291762</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712487291762</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712491710513</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712491710513</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Test2&#10;testing testing\" />\n    <MESSAGE value=\"FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI\" />\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/CMSC130_MachineProblem1$HelloApplication.ic\" NAME=\"HelloApplication Coverage Results\" MODIFIED=\"1712491739899\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\n      <FILTER>com.example.cmsc130_machineproblem1.*</FILTER>\n    </SUITE>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cee8476350fab7b6eeb9b532b47edb732bfa2d16)
++++ b/.idea/workspace.xml	(date 1712495900022)
+@@ -4,9 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI">
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" beforeDir="false" />
++    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="Set some things up">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -55,11 +55,19 @@
+     "ignore.virus.scanning.warn.message": "true",
+     "kotlin-language-version-configured": "true",
+     "project.structure.last.edited": "Global Libraries",
+-    "project.structure.proportion": "0.0",
++    "project.structure.proportion": "0.15",
+     "project.structure.side.proportion": "0.2",
+     "settings.editor.selected.configurable": "preferences.JavaFX"
+   }
+ }]]></component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Family\IdeaProjects\CMSC130_MachineProblem1\src\main\java\com\example\cmsc130_machineproblem1" />
++    </key>
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="com.example.cmsc130_machineproblem1" />
++    </key>
++  </component>
+   <component name="RunManager">
+     <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.example.cmsc130_machineproblem1.HelloApplication" />
+@@ -107,13 +115,30 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712491710513</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Set some things up">
++      <option name="closed" value="true" />
++      <created>1712492214986</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1712492214986</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Set some things up">
++      <option name="closed" value="true" />
++      <created>1712492268767</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1712492268767</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Test2&#10;testing testing" />
+     <MESSAGE value="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI" />
+-    <option name="LAST_COMMIT_MESSAGE" value="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI" />
++    <MESSAGE value="Set some things up" />
++    <option name="LAST_COMMIT_MESSAGE" value="Set some things up" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/CMSC130_MachineProblem1$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1712491739899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

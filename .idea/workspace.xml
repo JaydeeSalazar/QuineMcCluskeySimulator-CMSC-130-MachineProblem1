@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI">
+    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="FrontEnd 1.1: Made the Results Text Field non re-writable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,13 +107,22 @@
       <option name="project" value="LOCAL" />
       <updated>1712491710513</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="FrontEnd 1.1: Made the Results Text Field non re-writable">
+      <option name="closed" value="true" />
+      <created>1712496441911</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712496441911</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test2&#10;testing testing" />
     <MESSAGE value="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI" />
+    <MESSAGE value="FrontEnd 1.1: Made the Results Text Field non re-writable" />
+    <option name="LAST_COMMIT_MESSAGE" value="FrontEnd 1.1: Made the Results Text Field non re-writable" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CMSC130_MachineProblem1$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1712491739899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
