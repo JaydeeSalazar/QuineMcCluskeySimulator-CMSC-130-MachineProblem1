@@ -16,6 +16,11 @@ public class HelloController
     private TextArea resultText;
 
     @FXML
+    protected void solveAction() {
+        System.out.println("testsolve");
+    }
+
+    @FXML
     protected void clearAction() {
         System.out.println("test");
     }
