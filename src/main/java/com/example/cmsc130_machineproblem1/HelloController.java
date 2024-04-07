@@ -17,12 +17,18 @@ public class HelloController
 
     @FXML
     protected void solveAction() {
-        System.out.println("testsolve");
+        
+
+        System.out.println("Solved");
     }
 
     @FXML
     protected void clearAction() {
-        System.out.println("test");
+        mintermsText.setText("");
+        variablesText.setText("");
+        resultText.setText("");
+
+        System.out.println("Cleared");
     }
 
 
