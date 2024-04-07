@@ -12,8 +12,6 @@ public class Term
     {
         this.mintermNumber = mintermNumber;
 
-
-
     }
 
 }
