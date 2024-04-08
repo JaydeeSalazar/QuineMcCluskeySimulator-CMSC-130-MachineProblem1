@@ -1,17 +1,27 @@
 package com.example.cmsc130_machineproblem1;
 
+import java.util.ArrayList;
+
 public class Term
 {
     private String term;
 
-    private int numOfOnes;
+    int numOfOnes;
 
-    public Term(mintermNumber, numberofVariables)
+    private ArrayList<Integer> nums;
+
+    public Term(String binary)
     {
-        this.mintermNumber = mintermNumber;
+        this.term = binary;
 
+        numOfOnes = 0;
+        for (int i = 0; i < term.length(); i++){
+            if(term.charAt(i) == '1')
+                numOfOnes++;
+        }
 
 
     }
+
 
 }
