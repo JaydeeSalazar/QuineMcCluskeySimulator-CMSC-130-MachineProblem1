@@ -76,23 +76,18 @@ public class HelloController {
         return test;
     }
 
-    // Term class
-    public class Term {
-        String value;
-        int numOfOnes;
+    public Term checkDifference(Term term1, Term term2){
+        for (int i = 0; i < term1)
 
-        public Term(String value) {
-            this.value = value;
-            calculateOnes();
-        }
 
-        private void calculateOnes() {
-            numOfOnes = 0;
-            for (int i = 0; i < value.length(); i++) {
-                if (value.charAt(i) == '1') {
-                    numOfOnes++;
-                }
-            }
-        }
+        return;
     }
+
+    public Term combineTerms(Term term1, Term term2){
+
+
+
+        return;
+    }
+
 }
