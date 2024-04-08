@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class testingterm
 {
     // Stores the minterm integers involved in forming the term
@@ -16,11 +18,17 @@ public class testingterm
     {
         String binaryRep = Integer.toBinaryString(minterm);
 
-        //Add leading zeros in accordance to number of variables
-        //check if not needed
+        while (binaryRep.length() < numOfVariables) { //Add leading zeros in accordance to number of variables
+            binaryRep = "0" + binaryRep;
+        }
 
-        // Initialize the groups array/must contain the integer minterm
+        groups = new ArrayList<Integer>(); // Initialize the groups array/must contain the integer minterm
+        groups.add(minterm);
 
-        // Count number of ones
+        onesNum = 0; // Count number of ones
+        for (int i = 0; i < binaryRep.length(); i++){
+            if(binaryRep.charAt(i) == '1')
+                onesNum++;
+        }
     }
 }
