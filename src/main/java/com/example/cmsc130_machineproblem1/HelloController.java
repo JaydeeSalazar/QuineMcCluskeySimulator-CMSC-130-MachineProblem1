@@ -37,7 +37,8 @@ public class HelloController {
         System.out.println("Cleared");
     }
 
-    public String[] convertToBinary(String mintermsReceived) {
+    public String[] convertToBinary(String mintermsReceived)
+    {
         String[] test = mintermsReceived.split(",");
         onesGroups = new ArrayList<>(); // Initialize onesGroups ArrayList
 

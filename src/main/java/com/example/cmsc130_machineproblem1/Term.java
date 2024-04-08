@@ -13,6 +13,9 @@ public class Term
     // Stores the numbers of '1' in the term
     private int onesNum;
 
+    // Determines whether this term was ever used in the process
+    private Boolean isUsed = false;
+
     // Constructor for the initialization of a brandnew term
     // that consists of only one minterm
 
@@ -57,6 +60,11 @@ public class Term
 
     public void setOnesNum(int onesNum) {
         this.onesNum = onesNum;
+    }
+
+    public void setUsed(Boolean used)
+    {
+        isUsed = used;
     }
 
 }
