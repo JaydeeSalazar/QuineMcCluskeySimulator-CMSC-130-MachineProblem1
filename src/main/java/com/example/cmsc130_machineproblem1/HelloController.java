@@ -56,48 +56,45 @@ public class HelloController {
 
         // Now we convert them to our variables
 
-        for (int i = 0; i < test.length; i++) {
+        for (int i = 0; i < test.length-1; i++) {
             String converted = Integer.toBinaryString(Integer.parseInt(test[i]));
-            while (converted.length() < numOfVariables) {
-                converted = "0" + converted;
-            }
+            Term temp = new Term(Integer.parseInt(converted), numOfVariables);
 
-            Term temp = new Term(converted);
-            int numOfOnes = temp.numOfOnes; // Get the number of ones in the Term
+            int numOfOnes = temp.getOnesNum(); // Get the number of ones in the Term
             // Ensure that the ArrayList for numOfOnes exists
             while (onesGroups.size() <= numOfOnes) {
                 onesGroups.add(new ArrayList<>());
             }
             // Add the Term to the appropriate ArrayList in onesGroups
             onesGroups.get(numOfOnes).add(temp);
-            System.out.println(converted);
+           // System.out.println(converted);
         }
 
         return test;
     }
 
-    public boolean checkDifference(Term term1, Term term2){
-        boolean differenceCheck = false;
+    public int checkDifference(Term term1, Term term2){
+        int index = -1;
         for (int i = 0; i < term1.getBinaryRep().length(); i++){
             if (term1.getBinaryRep().charAt(i) != term2.getBinaryRep().charAt(i)){
-                if (differenceCheck == true){
-                    return false;
+                if (index >= 0){
+                    return -1;
                 }
                 else{
-                    differenceCheck = true;
+                    index = i;
                 }
             }
         }
-        return true; // Finished for loop without encountering more than 1 difference
+        return index; // Finished for loop without encountering more than 1 difference
     }
 
-    public Term combineTerms(Term term1, Term term2){
-
-
-        if (checkDifference(term1, term2) == true){
-
-        }
-        return;
+    public Term combineTerms(Term term1, Term term2, int indexOfDifference){
+        Term combinedTerm = new Term(0, numOfVariables);
+        String newBinaryRep = term1.getBinaryRep();
+        newBinaryRep = newBinaryRep.substring(0,indexOfDifference)+'-'+newBinaryRep.substring(indexOfDifference+1);
+        combinedTerm.setBinaryRep(newBinaryRep);
+        System.out.println(combinedTerm.getBinaryRep());
+        return combinedTerm;
     }
 
 }

@@ -23,6 +23,7 @@ public class Term
         while (binaryRep.length() < numOfVariables) { //Add leading zeros in accordance to number of variables
             binaryRep = "0" + binaryRep;
         }
+        this.binaryRep = binaryRep;
 
         groups = new ArrayList<Integer>(); // Initialize the groups array/must contain the integer minterm
         groups.add(minterm);
@@ -44,6 +45,18 @@ public class Term
 
     public int getOnesNum() {
         return onesNum;
+    }
+
+    public void setGroups(ArrayList<Integer> groups) {
+        this.groups = groups;
+    }
+
+    public void setBinaryRep(String binaryRep) {
+        this.binaryRep = binaryRep;
+    }
+
+    public void setOnesNum(int onesNum) {
+        this.onesNum = onesNum;
     }
 
 }
