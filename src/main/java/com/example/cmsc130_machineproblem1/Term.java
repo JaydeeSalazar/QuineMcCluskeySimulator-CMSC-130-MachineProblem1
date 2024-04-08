@@ -50,6 +50,10 @@ public class Term
         return onesNum;
     }
 
+    public boolean isUsed() {
+        return isUsed;
+    }
+
     public void setGroups(ArrayList<Integer> groups) {
         this.groups = groups;
     }
