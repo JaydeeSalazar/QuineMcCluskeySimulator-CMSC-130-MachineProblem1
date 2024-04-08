@@ -39,10 +39,19 @@ public class HelloController {
 
     public String[] convertToBinary(String mintermsReceived)
     {
+        // Gets the minterms from the string
         String[] test = mintermsReceived.split(",");
+
+        // Transfer the minterms into an array that holds integer
+        ArrayList<Integer> test2 = new ArrayList<>();
+        for (int i = 0; i < test.length; i++)
+        {
+            test2.add(parseInt(test[0]));
+        }
+
         onesGroups = new ArrayList<>(); // Initialize onesGroups ArrayList
 
-        // Determine the highest value minterm first
+        // Determines the highest valued minterm integer
         int highest = -1;
         for (int i = 0; i < test.length; i++) {
             int currentValue = Integer.parseInt(test[i]);
@@ -51,19 +60,20 @@ public class HelloController {
             }
         }
 
-        // Now we determine how many variables to use, based on the string length of the highest
+        // Determines how many variables to use, based on the string length of the
+        // binary rep of the highest valued minterm
         numOfVariables = Integer.toBinaryString(highest).length();
         System.out.println(numOfVariables + " variables needed");
 
         // Now we convert them to our variables
-
-        for (int i = 0; i < test.length-1; i++) {
-            String converted = Integer.toBinaryString(Integer.parseInt(test[i]));
-            Term temp = new Term(Integer.parseInt(converted), numOfVariables);
+        for (int i = 0; i < test.length-1; i++)
+        {
+            Term temp = new Term(Integer.parseInt((test[i])), numOfVariables);
 
             int numOfOnes = temp.getOnesNum(); // Get the number of ones in the Term
             // Ensure that the ArrayList for numOfOnes exists
-            while (onesGroups.size() <= numOfOnes) {
+            while (onesGroups.size() <= numOfOnes)
+            {
                 onesGroups.add(new ArrayList<>());
             }
             // Add the Term to the appropriate ArrayList in onesGroups
