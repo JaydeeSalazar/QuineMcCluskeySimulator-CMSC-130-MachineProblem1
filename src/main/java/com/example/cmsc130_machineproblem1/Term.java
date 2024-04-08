@@ -2,11 +2,9 @@ package com.example.cmsc130_machineproblem1;
 
 public class Term
 {
-    private String mintermNumber;
+    private String term;
 
-    private int mintermBinary;
-
-    private int ones_number;
+    private int numOfOnes;
 
     public Term(mintermNumber, numberofVariables)
     {
