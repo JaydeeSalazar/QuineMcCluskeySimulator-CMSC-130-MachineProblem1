@@ -4,24 +4,46 @@ import java.util.ArrayList;
 
 public class Term
 {
-    private String term;
+    // Stores the minterm integers involved in forming the term
+    private ArrayList<Integer> groups;
 
-    int numOfOnes;
+    // Stores the binary representation of the term
+    private String binaryRep;
 
-    private ArrayList<Integer> nums;
+    // Stores the numbers of '1' in the term
+    private int onesNum;
 
-    public Term(String binary)
+    // Constructor for the initialization of a brandnew term
+    // that consists of only one minterm
+
+    public Term(int minterm, int numOfVariables)
     {
-        this.term = binary;
+        String binaryRep = Integer.toBinaryString(minterm);
 
-        numOfOnes = 0;
-        for (int i = 0; i < term.length(); i++){
-            if(term.charAt(i) == '1')
-                numOfOnes++;
+        while (binaryRep.length() < numOfVariables) { //Add leading zeros in accordance to number of variables
+            binaryRep = "0" + binaryRep;
         }
 
+        groups = new ArrayList<Integer>(); // Initialize the groups array/must contain the integer minterm
+        groups.add(minterm);
 
+        onesNum = 0; // Count number of ones
+        for (int i = 0; i < binaryRep.length(); i++){
+            if(binaryRep.charAt(i) == '1')
+                onesNum++;
+        }
     }
 
+    public String getBinaryRep() {
+        return binaryRep;
+    }
+
+    public ArrayList<Integer> getGroups() {
+        return groups;
+    }
+
+    public int getOnesNum() {
+        return onesNum;
+    }
 
 }

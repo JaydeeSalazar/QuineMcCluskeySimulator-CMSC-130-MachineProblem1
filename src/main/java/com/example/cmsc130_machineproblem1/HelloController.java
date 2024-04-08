@@ -76,17 +76,27 @@ public class HelloController {
         return test;
     }
 
-    public Term checkDifference(Term term1, Term term2){
-        for (int i = 0; i < term1)
-
-
-        return;
+    public boolean checkDifference(Term term1, Term term2){
+        boolean differenceCheck = false;
+        for (int i = 0; i < term1.getBinaryRep().length(); i++){
+            if (term1.getBinaryRep().charAt(i) != term2.getBinaryRep().charAt(i)){
+                if (differenceCheck == true){
+                    return false;
+                }
+                else{
+                    differenceCheck = true;
+                }
+            }
+        }
+        return true; // Finished for loop without encountering more than 1 difference
     }
 
     public Term combineTerms(Term term1, Term term2){
 
 
+        if (checkDifference(term1, term2) == true){
 
+        }
         return;
     }
 

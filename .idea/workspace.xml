@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="FrontEnd 1.1: Made the Results Text Field non re-writable">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_04_2024_9_23_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_04_2024_9_23_pm__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2024_7_56_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2024_7_56_pm__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/testingterm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/testingterm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/Term.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/Term.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/testingterm.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "test3",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.selected.package.tslint": "(autodetect)",
