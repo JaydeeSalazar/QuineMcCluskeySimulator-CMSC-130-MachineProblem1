@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="BackEnd: made changes to controller">
+    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="BackEnd Progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712586123585</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="BackEnd Progress">
+      <option name="closed" value="true" />
+      <created>1712668503478</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712668503478</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +143,8 @@
     <MESSAGE value="FrontEnd 1: Make The Barebones GUI&#10;Make the barebones GUI" />
     <MESSAGE value="FrontEnd 1.1: Made the Results Text Field non re-writable" />
     <MESSAGE value="BackEnd: Added a new field for Term class&#10;Added a new field for the term class that determines whether or not it was used in the process. The appropriate setter for the field was also added" />
-    <option name="LAST_COMMIT_MESSAGE" value="BackEnd: Added a new field for Term class&#10;Added a new field for the term class that determines whether or not it was used in the process. The appropriate setter for the field was also added" />
+    <MESSAGE value="BackEnd Progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="BackEnd Progress" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CMSC130_MachineProblem1$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1712491739899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
