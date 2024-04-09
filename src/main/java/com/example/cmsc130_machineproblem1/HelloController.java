@@ -22,6 +22,8 @@ public class HelloController {
 
     private ArrayList<ArrayList<Term>> onesGroups;
 
+    private ArrayList<Integer> minterms;
+
     private ArrayList<Term> unusedTerms = new ArrayList<>();
 
     private ArrayList<Term> unsimplifiedTerms = new ArrayList<>();
@@ -51,7 +53,7 @@ public class HelloController {
         String[] test = mintermsReceived.split(",");
 
         // Transfer the minterms into an array that holds integer
-        ArrayList<Integer> minterms = new ArrayList<>();
+        minterms = new ArrayList<>();
         for (int i = 0; i < test.length; i++)
         {
             minterms.add(Integer.parseInt(test[i]));
@@ -91,10 +93,27 @@ public class HelloController {
                 break;
             }
         }
+
+
         // Now that we've used the terms we need to simplify them more
 
         ArrayList<Term> finalTerms = new ArrayList<>();
         HashSet<Integer> uniqueIntegers = new HashSet<>();
+
+        for (Term term: simplifiedTerms)
+        {
+            ArrayList<Term> temp = new ArrayList<>();
+            temp.addAll(simplifiedTerms);
+
+            temp.remove(term);
+
+            if (isEssentialPrimeImplicant(term,temp))
+            {
+                finalTerms.add(term);
+            }
+
+        }
+        /*
 
         // Iterate through each term in simplifiedTerms
         for (Term term : simplifiedTerms) {
@@ -122,12 +141,62 @@ public class HelloController {
             }
         }
 
-        for (int k = 0; k < finalTerms.size(); k++){
-            System.out.println("Finalized terms: " + finalTerms.get(k).getBinaryRep());
-        }
+        */
 
+        System.out.println("Number of final terms: " + finalTerms.size());
+        System.out.println("Number of simplified terms: " + simplifiedTerms.size());
+        /*
+        for (Term term: finalTerms)
+        {
+            ArrayList<Integer> temp = term.getGroups();
+
+            System.out.print("Finalized terms: " + term.getBinaryRep() + " [Minterms: ");
+            for (Integer minterm : temp) {
+                System.out.print(minterm + " ");
+            }
+            System.out.println("]");
+        }
+        /*
+        for (int k = 0; k < finalTerms.size(); k++)
+        {
+            System.out.println("Finalized terms: " + finalTerms.get(k).getBinaryRep());
+        }*/
 
         return test;
+    }
+
+
+    public boolean isEssentialPrimeImplicant(Term candidate, ArrayList<Term> otherTerms)
+    {
+        ArrayList<Integer> candidateMinterms = candidate.getGroups();
+        ArrayList<Integer> otherTermsMinterms = new ArrayList<>();
+
+        for (Term terms: otherTerms)
+        {
+            ArrayList<Integer> temp = terms.getGroups();
+            for (int minterm: temp)
+            {
+                otherTermsMinterms.add(minterm);
+            }
+        }
+
+        for (int minterm: candidateMinterms)
+        {
+            boolean found = false;
+            for (int otherMinterms : otherTermsMinterms )
+            {
+                if (minterm == otherMinterms)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int simplify(){
