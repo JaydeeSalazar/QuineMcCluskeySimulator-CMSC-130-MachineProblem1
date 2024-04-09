@@ -30,7 +30,7 @@ public class HelloController {
 
     private ArrayList<Term> simplifiedTerms = new ArrayList<>();
 
-    public String defaultVariables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ[/]^_";
+    private ArrayList<Term> finalTerms = new ArrayList<>();
 
     @FXML
     protected void solveAction() {
@@ -43,12 +43,15 @@ public class HelloController {
         mintermsText.setText("");
         variablesText.setText("");
         resultText.setText("");
-
-        System.out.println("Cleared");
     }
 
     public String[] convertToBinary(String mintermsReceived)
     {
+        simplifiedTerms.clear();
+        unusedTerms.clear();
+        finalTerms.clear();
+        resultText.setText("");
+
         // Gets the minterms from the string
         String[] test = mintermsReceived.split(",");
 
@@ -97,26 +100,16 @@ public class HelloController {
 
         // Now that we've used the terms we need to simplify them more
 
-        ArrayList<Term> finalTerms = new ArrayList<>();
         HashSet<Integer> uniqueIntegers = new HashSet<>();
 
-        for (Term term: simplifiedTerms)
-        {
-            ArrayList<Term> temp = new ArrayList<>();
-            temp.addAll(simplifiedTerms);
-
-            temp.remove(term);
-
-            if (isEssentialPrimeImplicant(term,temp))
-            {
-                finalTerms.add(term);
-            }
-
+        ArrayList<Term> uniqueTerms = removeDuplicateTerms(simplifiedTerms);
+        for (int i = 0; i < uniqueTerms.size(); i++){
+            System.out.println("Simplified term w/o dupe: " + uniqueTerms.get(i).getBinaryRep());
         }
-        /*
+
 
         // Iterate through each term in simplifiedTerms
-        for (Term term : simplifiedTerms) {
+        for (Term term : uniqueTerms) {
             // Clear the unique integers set for each term
             uniqueIntegers.clear();
 
@@ -124,7 +117,7 @@ public class HelloController {
             for (Integer group : term.getGroups()) {
                 // If the current group is not present in any other term, add it to the uniqueIntegers set
                 boolean isUnique = true;
-                for (Term otherTerm : simplifiedTerms) {
+                for (Term otherTerm : uniqueTerms) {
                     if (term != otherTerm && otherTerm.getGroups().contains(group)) {
                         isUnique = false;
                         break;
@@ -141,62 +134,14 @@ public class HelloController {
             }
         }
 
-        */
-
-        System.out.println("Number of final terms: " + finalTerms.size());
-        System.out.println("Number of simplified terms: " + simplifiedTerms.size());
-        /*
-        for (Term term: finalTerms)
-        {
-            ArrayList<Integer> temp = term.getGroups();
-
-            System.out.print("Finalized terms: " + term.getBinaryRep() + " [Minterms: ");
-            for (Integer minterm : temp) {
-                System.out.print(minterm + " ");
-            }
-            System.out.println("]");
+        System.out.println("Size of final terms: " + (finalTerms.size()));
+        for (int i = 0; i < finalTerms.size(); i++){
+            System.out.println("Final term #"+(i+1)+" :"+finalTerms.get(i).getBinaryRep());
         }
-        /*
-        for (int k = 0; k < finalTerms.size(); k++)
-        {
-            System.out.println("Finalized terms: " + finalTerms.get(k).getBinaryRep());
-        }*/
+        generateBooleanExpression();
+
 
         return test;
-    }
-
-
-    public boolean isEssentialPrimeImplicant(Term candidate, ArrayList<Term> otherTerms)
-    {
-        ArrayList<Integer> candidateMinterms = candidate.getGroups();
-        ArrayList<Integer> otherTermsMinterms = new ArrayList<>();
-
-        for (Term terms: otherTerms)
-        {
-            ArrayList<Integer> temp = terms.getGroups();
-            for (int minterm: temp)
-            {
-                otherTermsMinterms.add(minterm);
-            }
-        }
-
-        for (int minterm: candidateMinterms)
-        {
-            boolean found = false;
-            for (int otherMinterms : otherTermsMinterms )
-            {
-                if (minterm == otherMinterms)
-                {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public int simplify(){
@@ -212,25 +157,88 @@ public class HelloController {
                         unsimplifiedTerms.add(markBinaryRep(onesGroups.get(i).get(j), onesGroups.get(i+1).get(k), indexOfDifference));
                         System.out.println("Added: " + markBinaryRep(onesGroups.get(i).get(j), onesGroups.get(i+1).get(k), indexOfDifference).getBinaryRep());
                     }
-                    if (k == onesGroups.get(i+1).size()-1){
+                    /*if (k == onesGroups.get(i+1).size()-1){
                         if (!onesGroups.get(i).get(j).isUsed()){
-                            unusedTerms.add(onesGroups.get(i).get(j));
                             System.out.println(onesGroups.get(i).get(j).getBinaryRep() + " was never used");
+                            unusedOrFinal.add(onesGroups.get(i).get(j));
                         }
-                    }
+                    }*/
                 }
             }
+
             if (i == onesGroups.size()-2){
-                onesGroups.clear();
-                fillOnesGroups();
+                ArrayList<Term> unusedOrFinal = getUnusedTerms(onesGroups);
+                if (amountSimplified == 0){
+                    unusedTerms.addAll(unusedOrFinal);
+                }
+                else{
+                    finalTerms.addAll(unusedOrFinal);
+                }
+                printIsUsedStatus(onesGroups);
                 if (amountSimplified == 0) {
                     simplifiedTerms.addAll(unsimplifiedTerms);
                     simplifiedTerms.addAll(unusedTerms);
+                    simplifiedTerms.addAll(onesGroups.get((onesGroups.size())-1));
+
                 }
+
+                onesGroups.clear();
+                fillOnesGroups();
                 unsimplifiedTerms.clear();
             }
         }
         return amountSimplified;
+    }
+
+    public ArrayList<Term> removeDuplicateTerms(ArrayList<Term> rawTerms){
+        ArrayList<Term> newTerms = new ArrayList<>();
+        HashSet<String> binaryReps = new HashSet<>();
+
+        for (Term term : rawTerms){
+            String binaryRep = term.getBinaryRep();
+            if (!binaryReps.contains(binaryRep)) {
+                newTerms.add(term);
+                binaryReps.add(binaryRep);
+            }
+        }
+
+        return newTerms;
+    }
+
+    public void generateBooleanExpression() {
+        // Iterate through each simplified term
+        for (Term term : finalTerms) {
+            StringBuilder expression = new StringBuilder();
+
+            // Convert minterms to their corresponding variables
+            for (int i = 0; i < numOfVariables; i++) {
+                char variable = (char) ('A' + i);
+                if (term.getBinaryRep().charAt(i) == '0') {
+                    expression.append(variable).append("'");
+                } else if (term.getBinaryRep().charAt(i) == '1') {
+                    expression.append(variable);
+                }
+            }
+
+            // Add the term to the result
+            if (!expression.isEmpty()) {
+                resultText.appendText(expression.toString());
+                resultText.appendText(" + ");
+            }
+        }
+
+        // Remove the extra " + " at the end
+        if (resultText.getText().endsWith(" + ")) {
+            resultText.deleteText(resultText.getText().length() - 3, resultText.getText().length());
+        }
+    }
+
+    public void printIsUsedStatus(ArrayList<ArrayList<Term>> onesGroups) {
+        for (ArrayList<Term> termsList : onesGroups) {
+            for (Term term : termsList) {
+                System.out.println("Binary Rep: " + term.getBinaryRep() + ", isUsed: " + term.isUsed());
+            }
+        }
     }
 
     public int checkDifference(Term term1, Term term2){
@@ -246,6 +254,18 @@ public class HelloController {
             }
         }
         return index; // Finished for loop without encountering more than 1 difference
+    }
+
+    public ArrayList<Term> getUnusedTerms(ArrayList<ArrayList<Term>> onesGroups) {
+        ArrayList<Term> unusedTerms = new ArrayList<>();
+        for (ArrayList<Term> termsList : onesGroups) {
+            for (Term term : termsList) {
+                if (!term.isUsed()) {
+                    unusedTerms.add(term);
+                }
+            }
+        }
+        return unusedTerms;
     }
 
     public Term markBinaryRep(Term term1, Term term2, int indexToBeModified){
