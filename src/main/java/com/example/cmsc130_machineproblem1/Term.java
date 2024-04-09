@@ -1,6 +1,9 @@
 package com.example.cmsc130_machineproblem1;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Term
 {
@@ -19,6 +22,7 @@ public class Term
     // Constructor for the initialization of a brandnew term
     // that consists of only one minterm
 
+
     public Term(int minterm, int numOfVariables)
     {
         String binaryRep = Integer.toBinaryString(minterm);
@@ -36,6 +40,22 @@ public class Term
             if(binaryRep.charAt(i) == '1')
                 onesNum++;
         }
+    }
+
+    public Term(String newBinaryRep, ArrayList<Integer> group1, ArrayList<Integer> group2)
+    {
+        this.binaryRep = newBinaryRep;
+
+        onesNum = 0; // Count number of ones
+        for (int i = 0; i < binaryRep.length(); i++){
+            if(binaryRep.charAt(i) == '1')
+                onesNum++;
+        }
+
+        groups = new ArrayList<>();
+        groups.addAll(group1);
+        groups.addAll(group2);
+
     }
 
     public String getBinaryRep() {
