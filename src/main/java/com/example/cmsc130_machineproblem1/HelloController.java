@@ -33,19 +33,14 @@ public class HelloController {
     private ArrayList<Term> finalTerms = new ArrayList<>();
 
     @FXML
-    protected void solveAction() {
-        String[] minterms = convertToBinary(mintermsText.getText());
-        System.out.println("Solved");
-    }
-
-    @FXML
     protected void clearAction() {
         mintermsText.setText("");
         variablesText.setText("");
         resultText.setText("");
     }
 
-    public String[] convertToBinary(String mintermsReceived)
+    @FXML
+    protected void solveAction()
     {
         simplifiedTerms.clear();
         unusedTerms.clear();
@@ -53,7 +48,7 @@ public class HelloController {
         resultText.setText("");
 
         // Gets the minterms from the string
-        String[] test = mintermsReceived.replaceAll("\\s+","").split(",");
+        String[] test = mintermsText.getText().replaceAll("\\s+","").split(",");
 
         // Transfer the minterms into an array that holds integer
         minterms = new ArrayList<>();
@@ -181,8 +176,6 @@ public class HelloController {
         System.out.println("Size of final terms: " + (finalTerms.size()));
         generateBooleanExpression();
 
-
-        return test;
     }
 
     public int simplify(){
