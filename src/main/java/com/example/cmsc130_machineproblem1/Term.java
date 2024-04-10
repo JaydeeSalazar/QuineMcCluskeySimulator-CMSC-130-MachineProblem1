@@ -66,6 +66,10 @@ public class Term
         return groups;
     }
 
+    public int getGroupSize() {
+        return groups.size();
+    }
+
     public int getOnesNum() {
         return onesNum;
     }

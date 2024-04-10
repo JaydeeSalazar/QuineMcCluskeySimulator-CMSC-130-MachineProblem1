@@ -53,7 +53,7 @@ public class HelloController {
         resultText.setText("");
 
         // Gets the minterms from the string
-        String[] test = mintermsReceived.split(",");
+        String[] test = mintermsReceived.replaceAll("\\s+","").split(",");
 
         // Transfer the minterms into an array that holds integer
         minterms = new ArrayList<>();
@@ -99,7 +99,7 @@ public class HelloController {
 
 
         // Now that we've used the terms we need to simplify them more
-
+        System.out.println("Simplified term size: " + simplifiedTerms.size());
         HashSet<Integer> uniqueIntegers = new HashSet<>();
 
         ArrayList<Term> uniqueTerms = removeDuplicateTerms(simplifiedTerms);
@@ -109,6 +109,7 @@ public class HelloController {
 
 
         // Iterate through each term in simplifiedTerms
+        System.out.println("Unique term size: " + uniqueTerms.size());
         for (Term term : uniqueTerms) {
             // Clear the unique integers set for each term
             uniqueIntegers.clear();
@@ -133,11 +134,51 @@ public class HelloController {
                 finalTerms.add(term);
             }
         }
+        System.out.println("Final term size: " + finalTerms.size());
+        for (int i = 0; i < finalTerms.size(); i++){
+            for (int j : finalTerms.get(i).getGroups()){
+                System.out.println("Minterm: " + j);
+            }
+            minterms.removeAll(finalTerms.get(i).getGroups());
+        }
+
+        if (!minterms.isEmpty()){
+
+
+            ArrayList<Term> candidateTerms = new ArrayList<>();
+            for (int i = 0; i < uniqueTerms.size(); i++){
+                ArrayList<Integer> tempMinterms = new ArrayList<Integer>();
+                tempMinterms.addAll(minterms);
+                tempMinterms.removeAll(unusedTerms.get(i).getGroups());
+                if (tempMinterms.isEmpty()){
+                    candidateTerms.add(uniqueTerms.get(i));
+                }
+            }
+
+            Term bestCandidateTerm = null;
+            for (int i = 0;  i < candidateTerms.size(); i++){
+                if (minterms.size() == candidateTerms.get(i).getGroupSize()){
+                    bestCandidateTerm = candidateTerms.get(i);
+                    break;
+                }
+                if (bestCandidateTerm == null){
+                    bestCandidateTerm = candidateTerms.get(i);
+                }
+                if (bestCandidateTerm.getGroupSize() > candidateTerms.get(i).getGroupSize()) {
+                    bestCandidateTerm = candidateTerms.get(i);
+                }
+            }
+
+            finalTerms.add(bestCandidateTerm);
+            for (int k = 0; k < minterms.size(); k++){
+                System.out.println("Remaining Minterm: " + minterms.get(k));
+            }
+            for (int k = 0; k < bestCandidateTerm.getGroupSize(); k++){
+                System.out.println("BCT Minterm: " + bestCandidateTerm.getGroups().get(k));
+            }
+        }
 
         System.out.println("Size of final terms: " + (finalTerms.size()));
-        for (int i = 0; i < finalTerms.size(); i++){
-            System.out.println("Final term #"+(i+1)+" :"+finalTerms.get(i).getBinaryRep());
-        }
         generateBooleanExpression();
 
 
@@ -155,7 +196,7 @@ public class HelloController {
                         onesGroups.get(i).get(j).setUsed(true);
                         onesGroups.get(i+1).get(k).setUsed(true);
                         unsimplifiedTerms.add(markBinaryRep(onesGroups.get(i).get(j), onesGroups.get(i+1).get(k), indexOfDifference));
-                        System.out.println("Added: " + markBinaryRep(onesGroups.get(i).get(j), onesGroups.get(i+1).get(k), indexOfDifference).getBinaryRep());
+                        System.out.println("Added to unsimplified terms: " + markBinaryRep(onesGroups.get(i).get(j), onesGroups.get(i+1).get(k), indexOfDifference).getBinaryRep());
                     }
                     /*if (k == onesGroups.get(i+1).size()-1){
                         if (!onesGroups.get(i).get(j).isUsed()){
@@ -165,28 +206,28 @@ public class HelloController {
                     }*/
                 }
             }
-
-            if (i == onesGroups.size()-2){
-                ArrayList<Term> unusedOrFinal = getUnusedTerms(onesGroups);
-                if (amountSimplified == 0){
-                    unusedTerms.addAll(unusedOrFinal);
-                }
-                else{
-                    finalTerms.addAll(unusedOrFinal);
-                }
-                printIsUsedStatus(onesGroups);
-                if (amountSimplified == 0) {
-                    simplifiedTerms.addAll(unsimplifiedTerms);
-                    simplifiedTerms.addAll(unusedTerms);
-                    simplifiedTerms.addAll(onesGroups.get((onesGroups.size())-1));
-
-                }
-
-                onesGroups.clear();
-                fillOnesGroups();
-                unsimplifiedTerms.clear();
-            }
         }
+        if (onesGroups.size() == 1){
+            simplifiedTerms.addAll(onesGroups.get(0));
+            simplifiedTerms.addAll(unusedTerms);
+            onesGroups.clear();
+            unsimplifiedTerms.clear();
+        }
+        else {
+            unusedTerms.addAll(getUnusedTerms(onesGroups));
+            printIsUsedStatus(onesGroups);
+            if (amountSimplified == 0) {
+                simplifiedTerms.addAll(unsimplifiedTerms);
+                simplifiedTerms.addAll(unusedTerms);
+                simplifiedTerms.addAll(onesGroups.get((onesGroups.size()) - 1));
+
+            }
+
+            onesGroups.clear();
+            fillOnesGroups();
+            unsimplifiedTerms.clear();
+        }
+        System.out.println("Amount simplified: " + amountSimplified + " | Ones groups size: " + onesGroups.size());
         return amountSimplified;
     }
 
@@ -278,6 +319,9 @@ public class HelloController {
         for (Term newTerm : unsimplifiedTerms) {
 
             System.out.println("Filling onesGroup with: " + newTerm.getBinaryRep());
+            for (int i : newTerm.getGroups()){
+                System.out.println("Minterm: " + i);
+            }
             int numOfOnes = newTerm.getOnesNum(); // Get the number of ones in the Term
             // Ensure that the ArrayList for numOfOnes exists
             while (onesGroups.size() <= numOfOnes) // Only adds if not enough groups
@@ -288,15 +332,5 @@ public class HelloController {
             onesGroups.get(numOfOnes).add(newTerm);
         }
     }
-
-    public Term combineTerms(Term term1, Term term2, int indexOfDifference){
-        Term combinedTerm = new Term(0, numOfVariables);
-        String newBinaryRep = term1.getBinaryRep();
-        newBinaryRep = newBinaryRep.substring(0,indexOfDifference)+'-'+newBinaryRep.substring(indexOfDifference+1);
-        combinedTerm.setBinaryRep(newBinaryRep);
-        System.out.println(combinedTerm.getBinaryRep());
-        return combinedTerm;
-    }
-    //public void groupTerms
 
 }
