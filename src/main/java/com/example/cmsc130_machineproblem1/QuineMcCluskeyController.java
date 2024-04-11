@@ -49,17 +49,15 @@ public class QuineMcCluskeyController {
         finalTerms.clear();
         resultText.setText("");
 
-
-
         // Gets the minterms from the string
         String[] test = mintermsText.getText().replaceAll("\\s+","").split(",");
         if (test.length == 1 && Objects.equals(test[0], "")){
-            resultText.setText("Blank input");
+            resultText.setText("MESSAGE: \"Minterms\" Field is Empty");
             return;
         }
         for (String s : test) {
             if (Pattern.matches("[a-zA-Z]+", s)) {
-                resultText.setText("Invalid input");
+                resultText.setText("MESSAGE: Invalid Input in \"Minterms\" Field");
                 return;
             }
         }
@@ -263,8 +261,20 @@ public class QuineMcCluskeyController {
         for (Term term : finalTerms) {
             StringBuilder expression = new StringBuilder();
             String variables = variablesText.getText().replaceAll("\\s+","").replaceAll(",", "");
+
+            // Check if input in Variables text field is valid
+            for (char c : variables.toCharArray())
+            {
+                if (!Character.isLetter(c))
+                {
+                    resultText.setText("MESSAGE: Invalid Input in \"Variables\" Field");
+                    return;
+                }
+            }
+
+            // Check if number of input in Variables text field is valid
             if (numOfVariables > variables.length()){
-                resultText.setText("Not enough variables");
+                resultText.setText("MESSAGE: Insufficient Amount of Variables in \"Variables\" Textfield");
                 return;
             }
             // Convert minterms to their corresponding variables

@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="BackEnd Progress">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e544ec53-be80-4a1e-a093-e78750ca451e" name="Changes" comment="BackEndProgress: Renamed Files and Fixed Result Text Area &#10; Renamed the files to appropriate names and make the textarea of &quot;Result&quot; so that it appends downwards and not just horizontally">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/QuineMcCluskeyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/QuineMcCluskeyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cmsc130_machineproblem1/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cmsc130_machineproblem1/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/QuineMcCluskeyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/QuineMcCluskeyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/QuineMcCluskeyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cmsc130_machineproblem1/QuineMcCluskeyController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +62,7 @@
     "Application.HelloApplication.executor": "Run",
     "Application.Quine.executor": "Run",
     "Application.QuineMcCluskeyApplication.executor": "Run",
+    "Application.QuineMcCluskeySimulator.executor": "Run",
     "Application.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -74,7 +71,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nathan/Documents/GitHub/CMSC130_MachineProblem1",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/QuineMcCluskeySimulator",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -87,7 +84,7 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application">
+    <configuration name="QuineMcCluskeySimulator" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.cmsc130_machineproblem1.QuineMcCluskeyApplication" />
       <module name="CMSC130_MachineProblem1" />
       <extension name="coverage">
@@ -156,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712668503478</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="BackEndProgress: Renamed Files and Fixed Result Text Area &#10; Renamed the files to appropriate names and make the textarea of &quot;Result&quot; so that it appends downwards and not just horizontally">
+      <option name="closed" value="true" />
+      <created>1712829668909</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712829668909</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +173,8 @@
     <MESSAGE value="FrontEnd 1.1: Made the Results Text Field non re-writable" />
     <MESSAGE value="BackEnd: Added a new field for Term class&#10;Added a new field for the term class that determines whether or not it was used in the process. The appropriate setter for the field was also added" />
     <MESSAGE value="BackEnd Progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="BackEnd Progress" />
+    <MESSAGE value="BackEndProgress: Renamed Files and Fixed Result Text Area &#10; Renamed the files to appropriate names and make the textarea of &quot;Result&quot; so that it appends downwards and not just horizontally" />
+    <option name="LAST_COMMIT_MESSAGE" value="BackEndProgress: Renamed Files and Fixed Result Text Area &#10; Renamed the files to appropriate names and make the textarea of &quot;Result&quot; so that it appends downwards and not just horizontally" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CMSC130_MachineProblem1$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1712491739899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
