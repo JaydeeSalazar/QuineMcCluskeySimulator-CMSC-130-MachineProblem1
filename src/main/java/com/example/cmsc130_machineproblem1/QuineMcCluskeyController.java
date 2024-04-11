@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class HelloController {
+public class QuineMcCluskeyController {
     @FXML
     private TextField mintermsText;
 
