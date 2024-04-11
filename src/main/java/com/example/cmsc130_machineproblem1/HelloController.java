@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class HelloController {
     @FXML
@@ -47,8 +49,20 @@ public class HelloController {
         finalTerms.clear();
         resultText.setText("");
 
+
+
         // Gets the minterms from the string
         String[] test = mintermsText.getText().replaceAll("\\s+","").split(",");
+        if (test.length == 1 && Objects.equals(test[0], "")){
+            resultText.setText("Blank input");
+            return;
+        }
+        for (String s : test) {
+            if (Pattern.matches("[a-zA-Z]+", s)) {
+                resultText.setText("Invalid input");
+                return;
+            }
+        }
 
         // Transfer the minterms into an array that holds integer
         minterms = new ArrayList<>();
@@ -174,7 +188,12 @@ public class HelloController {
         }
 
         System.out.println("Size of final terms: " + (finalTerms.size()));
-        generateBooleanExpression();
+        if (variablesText.getLength() == 0) {
+            generateBooleanExpression();
+        }
+        else{
+            generateCustomBooleanExpression();
+        }
 
     }
 
@@ -237,6 +256,38 @@ public class HelloController {
         }
 
         return newTerms;
+    }
+
+    public void generateCustomBooleanExpression() {
+        // Iterate through each simplified term
+        for (Term term : finalTerms) {
+            StringBuilder expression = new StringBuilder();
+            String variables = variablesText.getText().replaceAll("\\s+","").replaceAll(",", "");
+            if (numOfVariables > variables.length()){
+                resultText.setText("Not enough variables");
+                return;
+            }
+            // Convert minterms to their corresponding variables
+            for (int i = 0; i < numOfVariables; i++) {
+                char variable = variables.charAt(i);
+                if (term.getBinaryRep().charAt(i) == '0') {
+                    expression.append(variable).append("'");
+                } else if (term.getBinaryRep().charAt(i) == '1') {
+                    expression.append(variable);
+                }
+            }
+
+            // Add the term to the result
+            if (!expression.isEmpty()) {
+                resultText.appendText(expression.toString());
+                resultText.appendText(" + ");
+            }
+        }
+
+        // Remove the extra " + " at the end
+        if (resultText.getText().endsWith(" + ")) {
+            resultText.deleteText(resultText.getText().length() - 3, resultText.getText().length());
+        }
     }
 
     public void generateBooleanExpression() {
